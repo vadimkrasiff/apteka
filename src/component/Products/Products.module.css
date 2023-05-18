@@ -1,0 +1,36 @@
+.products {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 850px;
+    height: 0;
+}
+
+.product {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+    height: 350px;
+    box-sizing: border-box;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgb(0 0 0 / 20%);
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 10px;
+    box-sizing: border-box;
+    padding-top: 10px;
+    border-top: 1px solid #000;
+}
+
+.cost {
+    position: absolute;
+    bottom: 10px;
+}

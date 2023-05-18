@@ -13,12 +13,10 @@ let Menu = ({ logout, login }) => {
     let [openMenu, setMenu] = useState(false);
 
     const activeMenu = () => {
-        console.log('active');
         setMenu(!openMenu);
     }
 
     const deactiveMenu = () => {
-        console.log('deactive');
         setMenu(false);
     }   
     const ref = useRef();

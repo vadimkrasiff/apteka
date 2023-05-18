@@ -52,7 +52,6 @@ export  const productsAPI = {
           if (res.response) {
             let response = await fetch("http://localhost/api/item/getItems.php", { method: 'get' });
             let json = await response.json();
-              console.log(json)
 
               return json;
             } return res;
@@ -63,7 +62,7 @@ export  const productsAPI = {
       async getProduct(id) {
 
         console.log(id)
-          let response = await fetch(`http://localhost/api/user/read_one.php?id=${id}`, { method: 'get' });
+          let response = await fetch(`http://localhost/api/item/getItem.php?id=${id}`, { method: 'get' });
           let json = await response.json();
           if (response.ok) {
               return json;      
@@ -104,7 +103,6 @@ export const authAPI = {
 
 
 async login(data) {
-  console.log(JSON.stringify(data))
   let response = await fetch(`http://localhost/api/user/login.php`,
     {credentials: "include",
       method: 'POST',
@@ -112,7 +110,6 @@ async login(data) {
     });
 
     let json = await response.json();
-    alert(json.response);
   return json;
 },
 
@@ -131,8 +128,7 @@ async logout()  {
       method: 'POST'
     });
   let json = await response.json();
-  alert(json.message);
-  return response.ok;
+  return json;
 },
 };
 

@@ -34,8 +34,8 @@ export const getDataProducts = () => async (dispatch) => {
    
     dispatch(setFetching(true))
     let response = await productsAPI.getProducts();
-    setTimeout(() => dispatch(setFetching(false)), 300)
-    console.log(response.items)
+    setTimeout(() => dispatch(setFetching(false)), 300);
+    
     if (response.response === 1)
         dispatch(setProductsData(response.items))
     // dispatch(setTotalCount(response.totalCount))

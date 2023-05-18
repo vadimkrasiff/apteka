@@ -6,7 +6,7 @@ import { initializeApp } from "../../redux/app-reducer";
 import { login } from "../../redux/auth-reducer";
 import css from "./Login.module.css";
 
-let Login = ({ isAuth, login }) => {
+let Login = ({ isAuth, login, error }) => {
 
     const onFinish = (values) => {
         initializeApp()
@@ -29,6 +29,7 @@ let Login = ({ isAuth, login }) => {
             <Typography.Title level={3} >Authorization</Typography.Title>
             <Form.Item
       name="login"
+      
       rules={[
         {
           required: true,
@@ -36,7 +37,7 @@ let Login = ({ isAuth, login }) => {
         },
       ]}
     >
-      <Input />
+      <Input style={error ?{borderColor:"#ff4d4f"}:{}} />
     </Form.Item>
 
     <Form.Item
@@ -48,14 +49,12 @@ let Login = ({ isAuth, login }) => {
         },
       ]}
     >
-      <Input.Password />
+      <Input.Password style={error ?{borderColor:"#ff4d4f"}:{}} />
     </Form.Item>
 
-    <Form.Item
-      name="remember"
-      valuePropName="checked"
-    >
-      <Checkbox>Remember me</Checkbox>
+    <Form.Item name="error" style={{position:"relative"}} >
+      <div className={css.error} style={error ? { top:0} : { top: -10}}> {error}</div>
+      
     </Form.Item>
 
     <Form.Item
@@ -71,6 +70,7 @@ let Login = ({ isAuth, login }) => {
 
 let mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth,
+    error: state.auth.error,
 });
 
 export default connect(mapStateToProps, { login })(Login);

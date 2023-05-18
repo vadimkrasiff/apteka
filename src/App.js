@@ -11,6 +11,7 @@ import { compose } from 'redux';
 import { useEffect } from 'react';
 import NavBar from './component/NavBar/NavBar';
 import Products from './component/Products/Products';
+import { withAuthRedirect } from './hoc/withAuthRedirect';
 
 function App(props) {
 
@@ -40,7 +41,6 @@ function App(props) {
 const mapStateToProps = (state) => ({
   initialized: state.app.initialized
 });
-
 
 let AppContainer = compose(
   connect(mapStateToProps, {initializeApp}))
