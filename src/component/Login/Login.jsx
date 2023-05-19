@@ -8,6 +8,8 @@ import css from "./Login.module.css";
 
 let Login = ({ isAuth, login, error }) => {
 
+  document.title= "Авторизация"
+
     const onFinish = (values) => {
         initializeApp()
         login(values.login, values.password)
@@ -33,7 +35,7 @@ let Login = ({ isAuth, login, error }) => {
       rules={[
         {
           required: true,
-          message: 'Please input your email!',
+          message: 'Пожалуйста, введите  email!',
         },
       ]}
     >
@@ -45,7 +47,7 @@ let Login = ({ isAuth, login, error }) => {
       rules={[
         {
           required: true,
-          message: 'Please input your password!',
+          message: 'Пожалуйста, введите парроль!',
         },
       ]}
     >

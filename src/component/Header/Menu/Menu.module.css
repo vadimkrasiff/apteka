@@ -29,7 +29,7 @@
 
 
 .menu:hover {
-    background-color: #3F7A7E;
+    background-color: #0c4a6b;
 }
 
 .contextMenu {
@@ -41,7 +41,7 @@
     background-color: #fff;
     box-shadow: 0 2px 2px 0 rgb(60 64 67 / 30%), 0 6px 6px 2px rgb(60 64 67 / 15%) ;
     width: 200px;
-    height: calc(35px*7);
+    height: calc(35px*4);
     border-radius: 0 0 5px 5px;
     overflow: hidden;
     transition: 0.5s;

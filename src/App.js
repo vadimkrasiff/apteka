@@ -12,6 +12,7 @@ import { useEffect } from 'react';
 import NavBar from './component/NavBar/NavBar';
 import Products from './component/Products/Products';
 import { withAuthRedirect } from './hoc/withAuthRedirect';
+import Product from './component/Product/Product';
 
 function App(props) {
 
@@ -30,6 +31,7 @@ function App(props) {
         <Routes >
           <Route path='/login' element={<Login />} />
           <Route path='/products' element={<Products />} />
+          <Route path='/product/:currentId' element={<Product />} />
           <Route exact path='/' element={<Navigate to="/products" replace />} />
           <Route path='*'element={<div>404 Not Found</div>}  />
         </Routes>
