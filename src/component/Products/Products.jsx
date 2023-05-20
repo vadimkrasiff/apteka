@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { compose } from "redux";
 import { getDataProducts } from "../../redux/products-reducer";
 import { connect } from "react-redux";
@@ -6,6 +6,9 @@ import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import css from "./Products.module.css";
 import photo from "./../../image/product.png";
 import { NavLink } from "react-router-dom";
+import { Button, Form, Input } from "antd";
+import { SearchOutlined } from "@ant-design/icons";
+import NavBar from "../NavBar/NavBar";
 
 let Products = ({ items, isFetching, getDataProducts }) => {
 
@@ -13,11 +16,39 @@ let Products = ({ items, isFetching, getDataProducts }) => {
 
     document.title = "Товары";
 
+    const [searchText, setSearchText] = useState('');
+
+    const filteredItems = items ? items.filter(item => {
+        return (
+            item.name.toLowerCase().includes(searchText.toLowerCase())
+        )
+    }) : null;
+
+    const handleChange = e => {
+        setSearchText(e.target.value);
+    };
+
+    const onFinish = (values) => {
+    };
+    const onFinishFailed = (errorInfo) => {
+        console.log('Failed:', errorInfo);
+    };
 
     return <>
+    <NavBar />
         {items == null || isFetching ? <div>Загрузка</div> :
             <div className={css.products}>
-                {items.map((el) => <NavLink key={el.id} to={'/product/'+el.id}><div className={css.product} >
+                <div className={css.search}>
+                    <Form
+                        name="basic"
+                    >
+                        <Form.Item
+                            name="search" >
+                            <Input onChange={handleChange} placeholder="Поиск..." style={{ width: 900, height: 40, position: "relative" }} />
+                        </Form.Item>
+                    </Form>
+                </div>
+                {filteredItems.map((el) => <NavLink key={el.id} className={css.product} to={'/product/' + el.id}><div >
                     <div className={css.photo} style={{
                         backgroundImage: `url(${el.image || photo})`,
                         backgroundSize: "100% 100%",

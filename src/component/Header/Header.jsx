@@ -14,8 +14,11 @@ let Header = ({isAuth, logout, getUserProfile}) => {
             <a to='/' className={css.logo}><div className={css.icon}></div>АПТЕКА</a>
             { isAuth ?
             <Menu logout={logout}  />
-        :<Button  type="text" className={css.button} icon={<LoginOutlined />}>
-            <NavLink to={"/login"}>Sign in</NavLink></Button>}
+        :<div className={css.buttons}><Button  type="text" className={css.button} >
+            <NavLink to={"/login"}>Sign in</NavLink></Button>   
+            <Button  type="text" className={css.button} style={{border:"1px solid #fff"}} >
+            <NavLink to={"/register"}>Sign up</NavLink></Button>
+            </div>}
         </div> 
     </header>
 }

@@ -9,7 +9,7 @@ import avatar from "./../../../image/product.png"
 import css from "./Menu.module.css"
 import { useOnClickOutside } from "usehooks-ts";
 
-let Menu = ({ logout, login }) => {
+let Menu = ({ logout, login, rol}) => {
 
     let [openMenu, setMenu] = useState(false);
 
@@ -37,10 +37,10 @@ let Menu = ({ logout, login }) => {
         <div className={css.name}>{login}</div>
         <div><CaretDownOutlined /></div>
         </div>
-        <div className={`${css.contextMenu} ${!openMenu && css.closeMenu}`}>
+        <div style={openMenu && rol ? {height: "calc(35px*4)"}:{}} className={`${css.contextMenu} ${!openMenu && css.closeMenu}`}>
         <NavLink to="/profile"><UserOutlined style={{marginLeft: 5, marginRight: 10}} />Профиль</NavLink>
         <NavLink to="/products"><UserOutlined style={{marginLeft: 5, marginRight: 10}} />Товары</NavLink>
-        <NavLink to="/settings"><SettingOutlined style={{marginLeft: 5, marginRight: 10}}  />Настройки</NavLink>
+        {rol== "admin" ?<NavLink to="/admin"><SettingOutlined style={{marginLeft: 5, marginRight: 10}}  />Админ</NavLink>: null}
         <Button onClick={()=>{logout()}} type="primary" className={css.button} icon={<LogoutOutlined />}>Выйти</Button>
         </div>
     </div>
@@ -48,7 +48,8 @@ let Menu = ({ logout, login }) => {
 
 let mapStateToProps = (state) => {
     return {
-        login: state.auth.login
+        login: state.auth.login,
+        rol: state.auth.rol
     }
 }
 

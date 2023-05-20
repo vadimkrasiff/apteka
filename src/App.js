@@ -13,6 +13,7 @@ import NavBar from './component/NavBar/NavBar';
 import Products from './component/Products/Products';
 import { withAuthRedirect } from './hoc/withAuthRedirect';
 import Product from './component/Product/Product';
+import AdminBar from './component/AdminBar/AdminBar';
 
 function App(props) {
 
@@ -27,10 +28,14 @@ function App(props) {
         <Header />
       </header>
       <div className='content'>
-        <NavBar />
+        
         <Routes >
           <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<>Регистрация</>} />
           <Route path='/products' element={<Products />} />
+          <Route path='/admin' element={<><AdminBar /> <div>Admin</div></> } />
+          <Route path='/create-item' element={<div>Create item</div> } />
+          <Route path='/update-item' element={<div>Update item</div> } />
           <Route path='/product/:currentId' element={<Product />} />
           <Route exact path='/' element={<Navigate to="/products" replace />} />
           <Route path='*'element={<div>404 Not Found</div>}  />

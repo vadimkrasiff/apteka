@@ -28,21 +28,7 @@ export  const usersAPI = {
           } 
       },
     
-      async createUser  (data) {
-        console.log(JSON.stringify(data))
-        let response = await fetch(`http://localhost/api/user/register.php`,
-          {
-            method: 'POST',
-            headers: {
-              "Content-Type": "application/json",
-            },
-
-            body: JSON.stringify(data)
-          });
-        let json = await response.json();
-        alert(json.message);
-        return json;
-      },
+      
 };
 
 export  const productsAPI = {
@@ -62,7 +48,7 @@ export  const productsAPI = {
       async getProduct(id) {
 
         console.log(id)
-          let response = await fetch(`http://localhost/api/item/getItem.php?id=${id}`, { method: 'get' });
+          let response = await fetch(`http://localhost/api/item/getProduct.php?id=${id}`, { method: 'get' });
           let json = await response.json();
           if (response.ok) {
               return json;      
@@ -128,6 +114,21 @@ async logout()  {
       method: 'POST'
     });
   let json = await response.json();
+  return json;
+},
+async regist(data) {
+  console.log(JSON.stringify(data))
+  let response = await fetch(`http://localhost/api/user/register.php`,
+    {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+      },
+
+      body: JSON.stringify(data)
+    });
+  let json = await response.json();
+  alert(json.message);
   return json;
 },
 };

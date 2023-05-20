@@ -38,6 +38,10 @@ header {
     
   }
 
+.buttons {
+    display: flex;
+}
+
 .button {
     display: flex;
     justify-content: space-between;
