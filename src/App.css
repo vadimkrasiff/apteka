@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   /* background-color: #282c34; */
-  height: 100vh;
+  min-height: 100vh;
   font-size: 14px;
   overflow-x: hidden;
 }
@@ -15,9 +15,10 @@ a {
 
 .content {
   display: flex;
-  /* justify-content: center; */
+  /* align-items: center; */
   margin-top: 100px;
   flex-grow: 1;
+  height: calc(100%);
   box-sizing: border-box;
   padding: 20px 10px 20px 10px;
   width: 1280px;
@@ -27,21 +28,16 @@ footer {
   display: flex;
   justify-content: center;
   min-height: 100px;
-  
   width: 100%;
   background: #F4F4F4;
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+  background-image: url("./image/favicon.ico");
+  background-size: 100% 100%;
+  height: 200px;
+  width: 200px;
 
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
 
 
@@ -53,4 +49,28 @@ footer {
   to {
     transform: rotate(360deg);
   }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 3s linear;
+  }
+}
+
+.preloader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.preload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100%;
 }

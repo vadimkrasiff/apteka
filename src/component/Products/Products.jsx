@@ -9,6 +9,7 @@ import { NavLink } from "react-router-dom";
 import { Button, Form, Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import NavBar from "../NavBar/NavBar";
+import Preloader from "../../common/Preloader";
 
 let Products = ({ items, isFetching, getDataProducts }) => {
 
@@ -36,7 +37,7 @@ let Products = ({ items, isFetching, getDataProducts }) => {
 
     return <>
     <NavBar />
-        {items == null || isFetching ? <div>Загрузка</div> :
+        {items == null || isFetching ? <><Preloader /></> :
             <div className={css.products}>
                 <div className={css.search}>
                     <Form
@@ -48,7 +49,7 @@ let Products = ({ items, isFetching, getDataProducts }) => {
                         </Form.Item>
                     </Form>
                 </div>
-                {filteredItems.map((el) => <NavLink key={el.id} className={css.product} to={'/product/' + el.id}><div >
+                {filteredItems.length != 0 ? filteredItems.map((el) => <NavLink key={el.id} className={css.product} to={'/product/' + el.id}><div >
                     <div className={css.photo} style={{
                         backgroundImage: `url(${el.image || photo})`,
                         backgroundSize: "100% 100%",
@@ -62,7 +63,7 @@ let Products = ({ items, isFetching, getDataProducts }) => {
                             Цена: {el.cost}₽</div>
                     </div>
                 </div>
-                </NavLink>)}
+                </NavLink>): <div>Товары не найдены</div> }
             </div>}
     </>
 }

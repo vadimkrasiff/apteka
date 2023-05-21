@@ -1,3 +1,4 @@
+import { Navigate } from "react-router-dom";
 import { authAPI } from "../api/api";
 import { initializedSucces } from "./app-reducer";
 
@@ -53,7 +54,7 @@ export const login = (login, password ) => async (dispatch) => {
         dispatch(getAuthUserData());
         setTimeout(()=> dispatch(initializedSucces(true)),1000)  
     } else {
-        dispatch(setAuthUserData(null, null, false, response.message));
+        dispatch(setAuthUserData(null, null, null, false, response.message));
     }
 };
 
@@ -67,10 +68,17 @@ export const logout = () => async (dispatch) => {
     }
 };
 
-export const regist =(data) => async(dispatch) => {
-    let response = await authAPI.regist();
-    if (response.response == 1) {
+export const register =(data) => async(dispatch) => {
+    let response = await authAPI.regist(data);
+    if (response.response === 1) {
+        dispatch(initializedSucces(false))
+        dispatch(getAuthUserData());
+        setTimeout(()=> dispatch(initializedSucces(true)),1000);
+        return true
         
+    } else {
+        dispatch(setAuthUserData(null, null, null, false, response.message));
+        return false
     }
 }
 

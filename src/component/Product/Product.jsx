@@ -8,6 +8,7 @@ import photo from "./../../image/product.png";
 import { Form } from "antd";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import NavBar from "../NavBar/NavBar";
+import Preloader from "../../common/Preloader";
 
 
 let Product = ({ items, error, isFetching, getDataProduct }) => {
@@ -21,7 +22,7 @@ let Product = ({ items, error, isFetching, getDataProduct }) => {
 
     return <>
     <NavBar />
-        {!items || isFetching ? <div>Загрузка</div> :
+        {!items || isFetching ? <Preloader /> :
             error ? <div>{error}</div> :
                     <div className={css.product}>
                         <div className={css.leftInfo}>
@@ -37,7 +38,7 @@ let Product = ({ items, error, isFetching, getDataProduct }) => {
                         <div className={css.rightInfo}>
                             <div className={css.name}>{items[0].name}</div>
                             <div >
-                                <div>Производитель: {items[0].manufacturer}</div>
+                                <div>Производитель: {items[0].manufacturer || "Не указан"}</div>
                                 <div>Категория: {items[0].category_name}</div>
                             </div>
                             <label className={css.label}>Описание</label>

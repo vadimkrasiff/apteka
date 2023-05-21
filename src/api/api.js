@@ -33,7 +33,6 @@ export  const usersAPI = {
 
 export  const productsAPI = {
     async getProducts () {
-      
       return   authAPI.check().then(async (res) => {
           if (res.response) {
             let response = await fetch("http://localhost/api/item/getItems.php", { method: 'get' });
@@ -44,6 +43,18 @@ export  const productsAPI = {
         });
         
       },
+
+      async getCategories () {
+        return   authAPI.check().then(async (res) => {
+            if (res.response) {
+              let response = await fetch("http://localhost/api/category/getCategories.php", { method: 'get' });
+              let json = await response.json();
+  
+                return json;
+              } return res;
+          });
+          
+        },
 
       async getProduct(id) {
 
@@ -57,12 +68,9 @@ export  const productsAPI = {
     
       async createProduct  (data) {
         console.log(JSON.stringify(data))
-        let response = await fetch(`http://localhost/api/user/register.php`,
+        let response = await fetch(`http://localhost/api/item/create.php`,
           {
             method: 'POST',
-            headers: {
-              "Content-Type": "application/json",
-            },
 
             body: JSON.stringify(data)
           });
@@ -117,19 +125,15 @@ async logout()  {
   return json;
 },
 async regist(data) {
-  console.log(JSON.stringify(data))
   let response = await fetch(`http://localhost/api/user/register.php`,
     {
       method: 'POST',
-      headers: {
-        "Content-Type": "application/json",
-      },
 
       body: JSON.stringify(data)
     });
   let json = await response.json();
-  alert(json.message);
   return json;
 },
 };
+
 

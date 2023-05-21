@@ -14,13 +14,18 @@ import Products from './component/Products/Products';
 import { withAuthRedirect } from './hoc/withAuthRedirect';
 import Product from './component/Product/Product';
 import AdminBar from './component/AdminBar/AdminBar';
+import Register from './component/Register/Register';
+import Preloader from './common/Preloader';
+import Admin from './component/Admin/Admin';
 
 function App(props) {
 
   useEffect(()=>props.initializeApp(), [])
 
   if(!props.initialized)
-  return <div className="preloader">loading...</div> 
+  return <div className="App">
+    <div className="preloader"><Preloader /></div> 
+  </div>
 
   document.title = "Главная";
   return <div className="App">
@@ -31,11 +36,11 @@ function App(props) {
         
         <Routes >
           <Route path='/login' element={<Login />} />
-          <Route path='/register' element={<>Регистрация</>} />
+          <Route path='/register' element={<Register /> } />
           <Route path='/products' element={<Products />} />
-          <Route path='/admin' element={<><AdminBar /> <div>Admin</div></> } />
-          <Route path='/create-item' element={<div>Create item</div> } />
-          <Route path='/update-item' element={<div>Update item</div> } />
+          <Route path='/admin' element={<Admin /> } />
+          {/* <Route path='/create-item' element={<div>Create item</div> } />
+          <Route path='/update-item' element={<div>Update item</div> } /> */}
           <Route path='/product/:currentId' element={<Product />} />
           <Route exact path='/' element={<Navigate to="/products" replace />} />
           <Route path='*'element={<div>404 Not Found</div>}  />

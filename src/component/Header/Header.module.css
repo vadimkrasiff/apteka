@@ -30,8 +30,8 @@ header {
 }
 
 .icon {
-    /* background-image: url("../../preloader.svg"); */
-    filter: invert(1);
+    background-image: url("../../image/favicon.ico");
+    /* filter: invert(1); */
     background-size: 100% 100%;
     height: 50px;
     width: 50px;
