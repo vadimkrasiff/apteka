@@ -42,7 +42,7 @@ let Register = ({ isAuth, register, error }) => {
         }}
       >
         <Typography.Title level={3} >Регистрация</Typography.Title>
-        <label >ФИО</label>
+        <label className={css.label}>ФИО</label>
         <Form.Item
           name="fio"
           hasFeedback
@@ -55,7 +55,7 @@ let Register = ({ isAuth, register, error }) => {
         >
           <Input style={error ? { borderColor: "#ff4d4f" } : {}} />
         </Form.Item>
-        <label >Номер телефона</label>
+        <label className={css.label}>Номер телефона</label>
         <Form.Item
           name="numPhone"
           hasFeedback
@@ -69,7 +69,7 @@ let Register = ({ isAuth, register, error }) => {
         >
           <InputNumber min={11111111111} max={99999999999} maxLength={11} width={500} style={error ? { borderColor: "#ff4d4f", width: 400 } : {width: 400}} />
         </Form.Item>
-        <label >Логин</label>
+        <label className={css.label}>Логин</label>
         <Form.Item
           name="login"
           hasFeedback
@@ -83,7 +83,7 @@ let Register = ({ isAuth, register, error }) => {
           <Input style={error ? { borderColor: "#ff4d4f" } : {}} />
         </Form.Item>
 
-        <label >Пароль</label>
+        <label className={css.label}>Пароль</label>
         <Form.Item
           name="password"
           hasFeedback
@@ -97,7 +97,7 @@ let Register = ({ isAuth, register, error }) => {
           <Input.Password style={error ? { borderColor: "#ff4d4f" } : {}} />
         </Form.Item>
 
-        <label >Повтор пароля</label>
+        <label className={css.label}>Повтор пароля</label>
         <Form.Item
           name="doublePassword"
           dependencies={['password']}

@@ -13,11 +13,11 @@ let CreateItem = ({categories, createProduct}) => {
             category_id:values.category_id, manufacturer:values.manufacturer})
       }
 
-    return <div style={{ margin:50, width: 800 }}>
+    return <div className={css.form} >
         <Form
             name="basic"
             labelCol={{
-                span: 8,
+                span: 4,
             }}
             wrapperCol={{
                 span: 16,
@@ -31,7 +31,7 @@ let CreateItem = ({categories, createProduct}) => {
                 category_id:"",
             }}
         >
-            <Typography.Title style={{marginLeft:70, marginBottom:50}}  level={3} >Создание товара </Typography.Title>
+            <Typography.Title style={{marginLeft:30, marginBottom:20}}  level={3} >Создание товара </Typography.Title>
             
             <Form.Item
                 name="name"
@@ -108,7 +108,7 @@ let CreateItem = ({categories, createProduct}) => {
 
             <Form.Item
             wrapperCol={{
-                offset: 8,
+                offset: 4,
                 span: 16,
               }}
             >

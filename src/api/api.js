@@ -33,27 +33,18 @@ export  const usersAPI = {
 
 export  const productsAPI = {
     async getProducts () {
-      return   authAPI.check().then(async (res) => {
-          if (res.response) {
             let response = await fetch("http://localhost/api/item/getItems.php", { method: 'get' });
             let json = await response.json();
 
               return json;
-            } return res;
-        });
         
       },
 
       async getCategories () {
-        return   authAPI.check().then(async (res) => {
-            if (res.response) {
               let response = await fetch("http://localhost/api/category/getCategories.php", { method: 'get' });
               let json = await response.json();
   
                 return json;
-              } return res;
-          });
-          
         },
 
       async getProduct(id) {
@@ -68,6 +59,18 @@ export  const productsAPI = {
     
       async createProduct  (data) {
         let response = await fetch(`http://localhost/api/item/create.php`,
+          {
+            method: 'POST',
+
+            body: JSON.stringify(data)
+          });
+        let json = await response.json();
+        alert(json.message);
+        return json;
+      },
+
+      async deleteProduct  (data) {
+        let response = await fetch(`http://localhost/api/item/delete.php`,
           {
             method: 'POST',
 

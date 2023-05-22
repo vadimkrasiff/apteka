@@ -67,4 +67,4 @@ let mapStateToProps = (state) => {
         isFetching: state.product.isFetching
     }
 }
-export default compose(connect(mapStateToProps, { getDataProduct }), withAuthRedirect)(Product);
+export default compose(connect(mapStateToProps, { getDataProduct }))(Product);

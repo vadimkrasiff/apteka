@@ -75,5 +75,14 @@ export const updateProduct = (data) => async(dispatch) => {
     dispatch(getDataProducts())
 }
 
+export const deleteProduct = (data) => async(dispatch) => {
+    dispatch(setFetching(true))
+    let response = await productsAPI.deleteProduct(data);
+    setTimeout(() => dispatch(setFetching(false)), 300);
+    
+    if (response.response === 1)
+    dispatch(getDataProducts())
+}
+
 
 export default productsReducer;

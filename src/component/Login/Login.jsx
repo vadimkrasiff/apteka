@@ -29,7 +29,7 @@ let Login = ({ isAuth, login, error }) => {
         }}
       >
         <Typography.Title level={3} >Авторизация</Typography.Title>
-        <label  >Логин</label>
+        <label  className={css.label}>Логин</label>
         <Form.Item
           name="login"
 
@@ -42,7 +42,7 @@ let Login = ({ isAuth, login, error }) => {
         >
           <Input style={error ? { borderColor: "#ff4d4f" } : {}} />
         </Form.Item>
-        <label >Пароль</label>
+        <label className={css.label}>Пароль</label>
         <Form.Item
           name="password"
           rules={[

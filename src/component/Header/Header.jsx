@@ -11,7 +11,7 @@ let Header = ({isAuth, logout, getUserProfile}) => {
     
     return <header>
         <div className={css.content}>
-            <a to='/' className={css.logo}><div className={css.icon}></div>АПТЕКА</a>
+            <NavLink to='/products' className={css.logo}><div className={css.icon}></div>АПТЕКА</NavLink>
             { isAuth ?
             <Menu logout={logout}  />
         :<div className={css.buttons}><Button  type="text" className={css.button} >

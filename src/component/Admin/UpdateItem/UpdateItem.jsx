@@ -32,18 +32,18 @@ let UpdateItem = ({ categories, items, updateProduct }) => {
         console.log(values)
     }
 
-    return <div style={{ margin: 50, width: 800 }}>
+    return <div className={css.form}>
         <Form form={form}
             name="updateForm"
             labelCol={{
-                span: 8,
+                span: 4,
             }}
             wrapperCol={{
                 span: 16,
             }}
             onFinish={onFinish}
         >
-            <Typography.Title style={{marginLeft:55, marginBottom:50}}  level={3} >Изменение товара </Typography.Title>
+            <Typography.Title style={{marginLeft:30, marginBottom:20}}  level={3} >Изменение товара </Typography.Title>
 
             <Form.Item
                 name="id"
@@ -142,7 +142,7 @@ let UpdateItem = ({ categories, items, updateProduct }) => {
 
             <Form.Item
                 wrapperCol={{
-                    offset: 8,
+                    offset: 4,
                     span: 16,
                 }}
             >

@@ -1,14 +1,15 @@
 import { Form, Tabs } from "antd";
 import React, { useEffect } from "react";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
-import { createProduct, getCategories, getDataProducts, updateProduct } from "../../redux/products-reducer";
+import { createProduct, deleteProduct, getCategories, getDataProducts, updateProduct } from "../../redux/products-reducer";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import Preloader from "../../common/Preloader";
 import CreateItem from "./CreateItem/CreateItem";
 import UpdateItem from "./UpdateItem/UpdateItem";
+import DeleteItem from "./DeleteItem/DeleteItem";
 
-let Admin = ({getDataProducts, getCategories, createProduct, updateProduct, items, categories, rol, isFetching}) => {
+let Admin = ({getDataProducts, getCategories, createProduct, updateProduct, deleteProduct, items, categories, rol, isFetching}) => {
 
     useEffect(() => { getDataProducts(); getCategories()}, [])
 
@@ -17,7 +18,7 @@ let Admin = ({getDataProducts, getCategories, createProduct, updateProduct, item
 
     return <>
     {!items || !categories || isFetching ? <Preloader /> :
-    rol !== 'admin' ? <>У Вас нет доступа!<Preloader /></> :    
+    rol !== 'admin' ? <div style={{width:"100%"}}><div>У Вас нет доступа!</div><><Preloader /></></div> :    
         <Tabs
         defaultActiveKey="1"
         tabPosition="left"
@@ -35,7 +36,7 @@ let Admin = ({getDataProducts, getCategories, createProduct, updateProduct, item
             {
                 label: "Удаление товара",
                 key: 3,
-                children: `Tab 3`,
+                children: (<DeleteItem items={items}  deleteProduct={deleteProduct}  />),
             },
         ]}
         />
@@ -51,4 +52,4 @@ let mapStateToProps = (state) => ({
     isFetching: state.products.isFetching
 })
 
-export default compose(connect(mapStateToProps, { getDataProducts, getCategories, createProduct, updateProduct }), withAuthRedirect)(Admin);
+export default compose(connect(mapStateToProps, { getDataProducts, getCategories, createProduct, updateProduct, deleteProduct }), withAuthRedirect)(Admin);
