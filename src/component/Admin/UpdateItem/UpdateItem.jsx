@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { initializeApp } from "../../../redux/app-reducer";
 import css from "./../Admin.module.css"
 
-let UpdateItem = ({ categories, items, createProduct }) => {
+let UpdateItem = ({ categories, items, updateProduct }) => {
 
     const [form] = Form.useForm();
     const [itemId, setItemId] = useState(items[0].id);
@@ -28,7 +28,7 @@ let UpdateItem = ({ categories, items, createProduct }) => {
 
     const onFinish = (values) => {
         initializeApp()
-        createProduct(values);
+        updateProduct(values);
         console.log(values)
     }
 

@@ -1,15 +1,14 @@
 import { Form, Tabs } from "antd";
 import React, { useEffect } from "react";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
-import { createProduct, getCategories, getDataProducts } from "../../redux/products-reducer";
+import { createProduct, getCategories, getDataProducts, updateProduct } from "../../redux/products-reducer";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import Preloader from "../../common/Preloader";
 import CreateItem from "./CreateItem/CreateItem";
 import UpdateItem from "./UpdateItem/UpdateItem";
 
-
-let Admin = ({getDataProducts, getCategories, createProduct, items, categories, rol, isFetching}) => {
+let Admin = ({getDataProducts, getCategories, createProduct, updateProduct, items, categories, rol, isFetching}) => {
 
     useEffect(() => { getDataProducts(); getCategories()}, [])
 
@@ -31,7 +30,7 @@ let Admin = ({getDataProducts, getCategories, createProduct, items, categories, 
             {
                 label: "Изменение товара",
                 key: 2,
-                children: (<UpdateItem categories={categories} items={items}  createProduct={createProduct} />),
+                children: (<UpdateItem categories={categories} items={items}  updateProduct={updateProduct} />),
             },
             {
                 label: "Удаление товара",
@@ -52,4 +51,4 @@ let mapStateToProps = (state) => ({
     isFetching: state.products.isFetching
 })
 
-export default compose(connect(mapStateToProps, { getDataProducts, getCategories, createProduct }), withAuthRedirect)(Admin);
+export default compose(connect(mapStateToProps, { getDataProducts, getCategories, createProduct, updateProduct }), withAuthRedirect)(Admin);
