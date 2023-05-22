@@ -1,6 +1,7 @@
 import { Button, Form, Input, InputNumber, Select, Typography } from "antd";
 import React from "react";
 import { initializeApp } from "../../../redux/app-reducer";
+import css from "./../Admin.module.css"
 
 const { TextArea } = Input;
 
@@ -30,10 +31,7 @@ let CreateItem = ({categories, createProduct}) => {
                 category_id:"",
             }}
         >
-            {/* <Form.Item wrapperCol={{
-                offset: 5,
-                span: 16,
-              }}><Typography.Title level={3} >Создание товара</Typography.Title></Form.Item> */}
+            <Typography.Title style={{marginLeft:70, marginBottom:50}}  level={3} >Создание товара </Typography.Title>
             
             <Form.Item
                 name="name"
@@ -114,10 +112,7 @@ let CreateItem = ({categories, createProduct}) => {
                 span: 16,
               }}
             >
-                <Button type="primary" htmlType="submit" style={{
-                    backgroundColor:'#032E46',
-                    width:80
-                }}>
+                <Button type="primary" htmlType="submit" className={css.logButton }>
                     Создать
                 </Button>
             </Form.Item>

@@ -6,6 +6,7 @@ import { compose } from "redux";
 import { connect } from "react-redux";
 import Preloader from "../../common/Preloader";
 import CreateItem from "./CreateItem/CreateItem";
+import UpdateItem from "./UpdateItem/UpdateItem";
 
 
 let Admin = ({getDataProducts, getCategories, createProduct, items, categories, rol, isFetching}) => {
@@ -30,7 +31,7 @@ let Admin = ({getDataProducts, getCategories, createProduct, items, categories, 
             {
                 label: "Изменение товара",
                 key: 2,
-                children: `Tab 2`,
+                children: (<UpdateItem categories={categories} items={items}  createProduct={createProduct} />),
             },
             {
                 label: "Удаление товара",

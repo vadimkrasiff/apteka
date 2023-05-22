@@ -67,8 +67,19 @@ export  const productsAPI = {
       },
     
       async createProduct  (data) {
-        console.log(JSON.stringify(data))
         let response = await fetch(`http://localhost/api/item/create.php`,
+          {
+            method: 'POST',
+
+            body: JSON.stringify(data)
+          });
+        let json = await response.json();
+        alert(json.message);
+        return json;
+      },
+
+      async updateProduct  (data) {
+        let response = await fetch(`http://localhost/api/item/setInfo.php`,
           {
             method: 'POST',
 
