@@ -6,6 +6,7 @@ import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import Preloader from "../../common/Preloader";
 import css from "./Order.module.css";
 import { Button, Modal, Table, Typography } from "antd";
+import OrderForm from "./OrderForm";
 
 let Order = ({ storage, isFetching, getStorage }) => {
 
@@ -59,18 +60,18 @@ let Order = ({ storage, isFetching, getStorage }) => {
     const [selectedRows, setSelectedRows] = useState([]);
     const [selectedRowKeys, setSelectedRowKeys] = useState([]);
 
-    const start = () => {
+    const showModal  = () => {
         setLoading(true);
         // ajax request after empty completing
         setTimeout(() => {
-        setSelectedRows([]);
-        setSelectedRowKeys([]);
+            setOpenModal(true);
           setLoading(false);
         }, 1000);
       }
 
   const handleSelectChange = (selectedRowKeys, selectedRows) => {
-    setSelectedRows(selectedRows);
+    const filteredRows = selectedRows.filter((row) => row.count !== 0);
+    setSelectedRows(filteredRows);
     setSelectedRowKeys(selectedRowKeys);
     console.log(selectedRows);
   };
@@ -78,6 +79,9 @@ let Order = ({ storage, isFetching, getStorage }) => {
   const rowSelection = {
     selectedRowKeys,
     onChange: handleSelectChange,
+    getCheckboxProps: (record) => ({
+        disabled: record.count === 0,
+      }),
   };
 
   const [openModal, setOpenModal] = useState(false);
@@ -88,9 +92,9 @@ let Order = ({ storage, isFetching, getStorage }) => {
             <div className={css.form}>
                 <Typography.Title level={3} style={{ marginBottom: 20 }}>Заказ</Typography.Title>
                 <Table rowSelection={rowSelection} columns={columns} dataSource={data} />
-                <Button type="primary" onClick={start} disabled={!selectedRows.length} loading={loading}>Заказать</Button>
+                <Button type="primary" onClick={showModal } disabled={!selectedRows.length} loading={loading}>Заказать</Button>
                 <span style={{marginLeft:20}}>{selectedRows.length ? `Количество: ${selectedRows.length}` : ''}</span>
-                <Modal open={openModal}>Modal</Modal>
+                <OrderForm  openModal={openModal} setOpenModal={setOpenModal} columns={columns} selectedRows={selectedRows} setSelectedRows={setSelectedRows} />
             </div>
         }
     </>
