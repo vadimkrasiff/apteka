@@ -14,9 +14,10 @@ import Products from './component/Products/Products';
 import { withAuthRedirect } from './hoc/withAuthRedirect';
 import Product from './component/Product/Product';
 import AdminBar from './component/AdminBar/AdminBar';
-import Register from './component/Register/Register';
+import Register from './component/Admin/Register/Register';
 import Preloader from './common/Preloader';
 import Admin from './component/Admin/Admin';
+import Order from './component/Order/Order';
 
 function App(props) {
 
@@ -36,7 +37,7 @@ function App(props) {
         
         <Routes >
           <Route path='/login' element={<Login />} />
-          <Route path='/register' element={<Register /> } />
+          <Route path='/order' element={<Order /> } />
           <Route path='/products' element={<Products />} />
           <Route path='/admin' element={<Admin /> } />
           {/* <Route path='/create-item' element={<div>Create item</div> } />

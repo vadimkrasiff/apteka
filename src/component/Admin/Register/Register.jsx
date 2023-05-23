@@ -1,25 +1,21 @@
 
-import { Button, Checkbox, Form, Input, InputNumber, Typography } from "antd";
+import { Button, Form, Input, InputNumber, Select, Typography } from "antd";
 import { connect } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";
-import { initializeApp } from "../../redux/app-reducer";
-import { login, register } from "../../redux/auth-reducer";
+import { initializeApp } from "../../../redux/app-reducer";
+import {  register } from "../../../redux/auth-reducer";
 import css from "./Register.module.css";
 
-let Register = ({ isAuth, register, error }) => {
+let Register = ({ register, error, pharmacies }) => {
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  document.title = "Регистрация"
+
 
   const onFinish = (values) => {
     initializeApp()
-    if (register({'fio':values.fio, 'num_phone': values.numPhone, 'login': values.login, 'password': values.password}))
-    setTimeout(()=> navigate("/login"),1000);
+    if (register({'fio':values.fio, 'num_phone': values.numPhone, 'login': values.login, 'password': values.password}));
     
-  }
-  if (isAuth) {
-    return <Navigate to="/" replace />
   }
 
   return <div className={css.form}>
@@ -41,7 +37,7 @@ let Register = ({ isAuth, register, error }) => {
           numPhone: "",
         }}
       >
-        <Typography.Title level={3} >Регистрация</Typography.Title>
+        <Typography.Title level={3} >Создание сотрудника</Typography.Title>
         <label className={css.label}>ФИО</label>
         <Form.Item
           name="fio"
@@ -54,6 +50,23 @@ let Register = ({ isAuth, register, error }) => {
           ]}
         >
           <Input style={error ? { borderColor: "#ff4d4f" } : {}} />
+        </Form.Item>
+        <label className={css.label}>Адрес аптеки</label>
+        <Form.Item
+          name="pharmacy_id"
+          hasFeedback
+          rules={[
+            {
+              required: true,
+              message: 'Пожалуйста, выбирете адрес атеки',
+            },
+          ]}
+        >
+          <Select
+                    options={pharmacies.map(el => ({
+                        value: el.id,
+                        label: el.address,
+                    }))} />
         </Form.Item>
         <label className={css.label}>Номер телефона</label>
         <Form.Item
@@ -136,8 +149,4 @@ let Register = ({ isAuth, register, error }) => {
   </div>
 }
 
-let mapStateToProps = (state) => ({
-  isAuth: state.auth.isAuth,
-  error: state.auth.error,
-});
-export default connect(mapStateToProps, { register })(Register);
+export default Register;

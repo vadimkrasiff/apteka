@@ -9,8 +9,10 @@ let initialState = {
     id: null,
     login: null,
     rol: null,
+    address:null,
     isAuth: false,
-    error: null
+    error: null,
+    
 };
 
 const authReducer = (state=initialState, action) => {
@@ -29,17 +31,17 @@ const authReducer = (state=initialState, action) => {
     }
 };
 
-export const setAuthUserData = (id,  login, rol, isAuth, error) => ({
+export const setAuthUserData = (id,  login, rol, address, isAuth, error) => ({
     type: SET_USER_DATA,
-    payload:{ id, login, rol, isAuth, error}
+    payload:{ id, login, rol, address, isAuth, error}
 });
 
 export const getAuthUserData = () => async (dispatch) => {
     
     let response = await authAPI.check();
     if (response.response == 1) {
-        let { id, login, rol } = response.data;
-        dispatch(setAuthUserData(id, login, rol, true, null));
+        let { id, login, rol, address } = response.data;
+        dispatch(setAuthUserData(id, login, rol, address, true, null));
     }
 };
 
@@ -54,7 +56,7 @@ export const login = (login, password ) => async (dispatch) => {
         dispatch(getAuthUserData());
         setTimeout(()=> dispatch(initializedSucces(true)),1000)  
     } else {
-        dispatch(setAuthUserData(null, null, null, false, response.message));
+        dispatch(setAuthUserData(null, null, null, null, false, response.message));
     }
 };
 
@@ -63,7 +65,7 @@ export const logout = () => async (dispatch) => {
     let response = await authAPI.logout();
     if (response.response == 1) {
         dispatch(initializedSucces(false))
-        dispatch(setAuthUserData(null, null, false, null));
+        dispatch(setAuthUserData(null, null, null, false, null));
         setTimeout(()=> dispatch(initializedSucces(true)),1000)
     }
 };
@@ -77,7 +79,7 @@ export const register =(data) => async(dispatch) => {
         return true
         
     } else {
-        dispatch(setAuthUserData(null, null, null, false, response.message));
+        dispatch(setAuthUserData(null, null, null, null, false, response.message));
         return false
     }
 }

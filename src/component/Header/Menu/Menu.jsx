@@ -37,7 +37,7 @@ let Menu = ({ logout, login, rol}) => {
         <div className={css.name}>{login}</div>
         <div><CaretDownOutlined /></div>
         </div>
-        <div style={openMenu && rol ? {height: "calc(35px*4)"}:{}} className={`${css.contextMenu} ${!openMenu && css.closeMenu}`}>
+        <div style={openMenu && rol == "admin" ? {height: "calc(35px*4)"}:{}} className={`${css.contextMenu} ${!openMenu && css.closeMenu}`}>
         <NavLink to="/profile"><UserOutlined style={{marginLeft: 5, marginRight: 10}} />Профиль</NavLink>
         <NavLink to="/products"><UserOutlined style={{marginLeft: 5, marginRight: 10}} />Товары</NavLink>
         {rol== "admin" ?<NavLink to="/admin"><SettingOutlined style={{marginLeft: 5, marginRight: 10}}  />Админ</NavLink>: null}
