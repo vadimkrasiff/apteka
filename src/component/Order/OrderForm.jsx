@@ -1,17 +1,19 @@
 import { Input, InputNumber, Modal, Table } from "antd";
 import React, { useEffect, useState } from "react";
 
-let OrderForm = ({ openModal, setOpenModal, selectedRows}) => {
+let OrderForm = ({ openModal, setOpenModal, selectedRows, setNull}) => {
 
 
     const [data, setData] = useState(selectedRows);
     const [inputValues, setInputValues] = useState({});
 
     useEffect(() => {
+      
         setData(() => {
           const updatedData = selectedRows.map((item) => ({
             ...item,
-            maxCount: item.count, // Добавляем новое свойство maxCount со значением count
+            maxCount: item.count,
+            count: 1 // Добавляем новое свойство maxCount со значением count
           }));
           return updatedData;
         });
@@ -19,9 +21,12 @@ let OrderForm = ({ openModal, setOpenModal, selectedRows}) => {
 
     const handleOk = () => {
         console.log(data);
+        setNull();
+        setInputValues([]);
         setOpenModal(false);
     };
     const handleCancel = () => {
+      setInputValues([]);
         setOpenModal(false);
     };
 
@@ -45,7 +50,6 @@ let OrderForm = ({ openModal, setOpenModal, selectedRows}) => {
         {
             title: 'Название',
             dataIndex: 'name',
-            editable: true,
             sorter: (a, b) => a.name.localeCompare(b.name)
         },
         {
@@ -60,7 +64,7 @@ let OrderForm = ({ openModal, setOpenModal, selectedRows}) => {
             sorter: (a, b) => a.count - b.count,
             render: (text, record) => {
                 const maxCount = record.maxCount || 0; 
-                const initialCount = inputValues[record.key];
+                const initialCount = inputValues[record.key]|| 1;
                 return (
                   <InputNumber
                     min={1}
@@ -72,8 +76,6 @@ let OrderForm = ({ openModal, setOpenModal, selectedRows}) => {
               }
         },
     ];
-
-    // const initialData = data.map((item) => ({ ...item, count: 1 }));
 
     return <>
         <Modal okButtonProps={{ disabled: isOkButtonDisabled }} width={1000} style={{width:1000}} open={openModal} onOk={handleOk} onCancel={handleCancel}>

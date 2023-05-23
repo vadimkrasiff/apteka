@@ -36,7 +36,6 @@ let Products = ({ items, isFetching, getDataProducts }) => {
     };
 
     return <>
-    <NavBar />
         {items == null || isFetching ? <><Preloader /></> :
             <div className={css.products}>
                 <div className={css.search}>
@@ -63,7 +62,7 @@ let Products = ({ items, isFetching, getDataProducts }) => {
                             Цена: {el.cost}₽</div>
                     </div>
                 </div>
-                </NavLink>): <div>Товары не найдены</div> }
+                </NavLink>): <><div>Товары не найдены</div><div className="preloader"><Preloader /></div></> }
             </div>}
     </>
 }

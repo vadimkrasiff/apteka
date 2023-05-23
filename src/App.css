@@ -15,7 +15,7 @@ a {
 
 .content {
   display: flex;
-  /* align-items: center; */
+  justify-content: center;
   margin-top: 100px;
   flex-grow: 1;
   height: calc(100%);
@@ -58,6 +58,9 @@ footer {
 }
 
 .preloader {
+  position: fixed;
+  left:0;
+  top:0;
   display: flex;
   flex-direction: column;
   align-items: center;

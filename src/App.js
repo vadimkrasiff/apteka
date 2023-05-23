@@ -44,7 +44,7 @@ function App(props) {
           <Route path='/update-item' element={<div>Update item</div> } /> */}
           <Route path='/product/:currentId' element={<Product />} />
           <Route exact path='/' element={<Navigate to="/products" replace />} />
-          <Route path='*'element={<div>404 Not Found</div>}  />
+          <Route path='*'element={<><div>404 Not Found</div><div className="preloader"><Preloader /></div></>}  />
         </Routes>
       </div>
       <footer><Footer /></footer>

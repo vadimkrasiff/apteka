@@ -73,8 +73,12 @@ let Order = ({ storage, isFetching, getStorage }) => {
     const filteredRows = selectedRows.filter((row) => row.count !== 0);
     setSelectedRows(filteredRows);
     setSelectedRowKeys(selectedRowKeys);
-    console.log(selectedRows);
   };
+
+  const setNull = () => {
+    setSelectedRows([]);
+    setSelectedRowKeys([]);
+  } 
 
   const rowSelection = {
     selectedRowKeys,
@@ -94,7 +98,7 @@ let Order = ({ storage, isFetching, getStorage }) => {
                 <Table rowSelection={rowSelection} columns={columns} dataSource={data} />
                 <Button type="primary" onClick={showModal } disabled={!selectedRows.length} loading={loading}>Заказать</Button>
                 <span style={{marginLeft:20}}>{selectedRows.length ? `Количество: ${selectedRows.length}` : ''}</span>
-                <OrderForm  openModal={openModal} setOpenModal={setOpenModal} columns={columns} selectedRows={selectedRows} setSelectedRows={setSelectedRows} />
+                <OrderForm  openModal={openModal} setOpenModal={setOpenModal} columns={columns} selectedRows={selectedRows} setNull={setNull} setSelectedRows={setSelectedRows} />
             </div>
         }
     </>

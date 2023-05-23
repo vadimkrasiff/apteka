@@ -1,3 +1,4 @@
+import { LeftOutlined } from "@ant-design/icons";
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -21,10 +22,12 @@ let Product = ({ items, error, isFetching, getDataProduct }) => {
 
 
     return <>
-    <NavBar />
+    
+    
         {!items || isFetching ? <Preloader /> :
             error ? <div>{error}</div> :
                     <div className={css.product}>
+                        <div className={css.back} onClick={()=>{window.history.back()}}><LeftOutlined />Назад</div>
                         <div className={css.leftInfo}>
                             <div className={css.photo} style={{
                                 backgroundImage: `url(${items[0].image || photo})`,

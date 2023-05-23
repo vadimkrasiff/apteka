@@ -38,6 +38,22 @@ header {
     
   }
 
+  .menu {
+    display: flex;
+  }
+
+  .menu a {
+    color: #fff;
+    font-size: 1.5rem;
+    transition: 0.2s;
+    margin: 10px;
+  }
+
+  .menu a:hover {
+    font-size: 1.6rem;
+  }
+
+
 .buttons {
     display: flex;
 }

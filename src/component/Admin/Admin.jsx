@@ -21,7 +21,7 @@ let Admin = ({getDataProducts, getCategories, getPharmacies, createProduct, upda
 
     return <>
     {!items || !categories || isFetching ? <Preloader /> :
-    rol !== 'admin' ? <div style={{width:"100%"}}><div>У Вас нет доступа!</div><><Preloader /></></div> :    
+    rol !== 'admin' ? <><div>У Вас нет доступа!</div><div className="preloader"><Preloader /></div></> :    
         <Tabs
         defaultActiveKey="1"
         tabPosition="left"
