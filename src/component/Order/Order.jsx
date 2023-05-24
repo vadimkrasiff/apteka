@@ -5,8 +5,9 @@ import { getStorage } from "../../redux/storage-reducer";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import Preloader from "../../common/Preloader";
 import css from "./Order.module.css";
-import { Button, Modal, Table, Typography } from "antd";
+import { Button, Form, Input, Modal, Table, Typography } from "antd";
 import OrderForm from "./OrderForm";
+import { NavLink } from "react-router-dom";
 
 let Order = ({ storage, isFetching, getStorage }) => {
 
@@ -45,16 +46,7 @@ let Order = ({ storage, isFetching, getStorage }) => {
         },
     ];
 
-    const data = storage ? storage.map((el, i) => ({
-        key: i + 1,
-        id: el.id,
-        name: el.name,
-        cost: el.cost,
-        count: el.count,
-        category_name: el.category_name,
-        manufacturer: el.manufacturer || "Не указан",
-
-    })) : null;
+   
 
     const [loading, setLoading] = useState(false);
     const [selectedRows, setSelectedRows] = useState([]);
@@ -90,11 +82,47 @@ let Order = ({ storage, isFetching, getStorage }) => {
 
   const [openModal, setOpenModal] = useState(false);
 
+  const [searchText, setSearchText] = useState('');
+
+    const storageItems = storage ? storage.filter(item => {
+        return (
+            item.name.toLowerCase().includes(searchText.toLowerCase())
+        )
+    }) : null;
+
+    const handleChange = e => {
+        setSearchText(e.target.value);
+        setSelectedRows([]);
+    setSelectedRowKeys([]);
+    };
+
+
+    const data = storageItems ? storageItems.map((el, i) => ({
+        key: i + 1,
+        id: el.id,
+        name: (<NavLink to={'/product/' + el.id}>{ el.name}</NavLink>),
+        cost: el.cost,
+        count: el.count,
+        category_name: el.category_name,
+        manufacturer: el.manufacturer || "Не указан",
+
+    })) : null;
+
 
     return <>
         {isFetching || !storage ? <Preloader /> :
             <div className={css.form}>
                 <Typography.Title level={3} style={{ marginBottom: 20 }}>Заказ</Typography.Title>
+                <div className={css.search}>
+                    <Form
+                        name="basic"
+                    >
+                        <Form.Item
+                            name="search" >
+                            <Input onChange={handleChange} placeholder="Поиск..." style={{ width: "100%", height: 40, position: "relative" }} />
+                        </Form.Item>
+                    </Form>
+                </div>
                 <Table rowSelection={rowSelection} columns={columns} dataSource={data} />
                 <Button type="primary" onClick={showModal } disabled={!selectedRows.length} loading={loading}>Заказать</Button>
                 <span style={{marginLeft:20}}>{selectedRows.length ? `Количество: ${selectedRows.length}` : ''}</span>

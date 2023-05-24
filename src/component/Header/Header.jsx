@@ -21,10 +21,8 @@ let Header = ({ isAuth, logout, rol }) => {
             </div>
             {isAuth ?
                 <Menu logout={logout} />
-                : <div className={css.buttons}><Button type="text" className={css.button} >
-                    <NavLink to={"/login"}>Sign in</NavLink></Button>
-                    <Button type="text" className={css.button} style={{ border: "1px solid #fff" }} >
-                        <NavLink to={"/register"}>Sign up</NavLink></Button>
+                : <div className={css.buttons}><Button icon={<LoginOutlined />} type="text" className={css.button} >
+                    <NavLink to={"/login"}>Войти</NavLink></Button>
                 </div>}
         </div>
     </header>

@@ -124,48 +124,41 @@ export const authAPI = {
       });
 
     let json = await response.json();
-    console.log(document.cookie);
+    
+    localStorage.setItem('id', json.id || 0);
+    localStorage.setItem('hash', json.hash || 0);
     return json;
   },
 
   async check() {
-    const getCookie = (name) => {
-      const cookieString = document.cookie;
-      const cookies = cookieString.split('; ');
     
-      for (let i = 0; i < cookies.length; i++) {
-        const cookie = cookies[i].split('=');
-        const cookieName = decodeURIComponent(cookie[0]);
-        const cookieValue = decodeURIComponent(cookie[1]);
-    
-        if (cookieName === name) {
-          return cookieValue;
-        }
-      }
-    
-      return null;
-    };
-    
-    const id = getCookie('id');
-    const hash = getCookie('hash');
-    console.log(id,hash );
+    let id = localStorage.getItem('id');
+    let hash = localStorage.getItem('hash');
+    if( id == "0" ) {id = false;}
+    if( hash == "0" ) {hash = false;}
+    console.log(id, hash)
     let response = await fetch(`http://localhost/api/worker/check.php`, {
-      credentials: "include",
+      // credentials: "include",
       method: 'POST',
       body: JSON.stringify({id, hash})
     });
     let json = await response.json();
-    console.log(document.cookie);
+
     return json
   },
 
   async logout() {
-    let response = await fetch(`http://localhost/api/worker/logout.php`,
+    let id = localStorage.getItem('id');
+    let response = await fetch(`http://localhost/api/worker/logout.php?id=${id}`,
       {
         credentials: "include",
         method: 'POST'
       });
     let json = await response.json();
+    if (json.response){
+      localStorage.setItem('id',  0);
+    localStorage.setItem('hash',  0);
+    }
     return json;
   },
   async regist(data) {
