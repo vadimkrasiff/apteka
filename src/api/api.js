@@ -128,8 +128,30 @@ export const authAPI = {
   },
 
   async check() {
+    const getCookie = (name) => {
+      const cookieString = document.cookie;
+      const cookies = cookieString.split('; ');
+    
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].split('=');
+        const cookieName = decodeURIComponent(cookie[0]);
+        const cookieValue = decodeURIComponent(cookie[1]);
+    
+        if (cookieName === name) {
+          return cookieValue;
+        }
+      }
+    
+      return null;
+    };
+    
+    const id = getCookie('id');
+    const hash = getCookie('hash');
+    console.log(id,hash );
     let response = await fetch(`http://localhost/api/worker/check.php`, {
-      credentials: "include"
+      credentials: "include",
+      method: 'POST',
+      body: JSON.stringify({id, hash})
     });
     let json = await response.json();
     return json
