@@ -124,6 +124,7 @@ export const authAPI = {
       });
 
     let json = await response.json();
+    console.log(document.cookie);
     return json;
   },
 
@@ -154,6 +155,7 @@ export const authAPI = {
       body: JSON.stringify({id, hash})
     });
     let json = await response.json();
+    console.log(document.cookie);
     return json
   },
 
