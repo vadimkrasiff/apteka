@@ -12,10 +12,12 @@ import { register } from "../../redux/auth-reducer";
 import Register from "./Register/Register";
 import Worker from "./Worker/Worker";
 import { getDataWorkers } from "../../redux/workers-reducer";
+import { getOrders } from "../../redux/orders-reducer";
+import Orders from "./Orders/Orders";
 
-let Admin = ({getDataProducts, getCategories, getPharmacies, createProduct, updateProduct, deleteProduct, register, getDataWorkers, pharmacies, error, items, workers, categories, rol, isFetching}) => {
+let Admin = ({getDataProducts, getCategories, getPharmacies, createProduct, updateProduct, deleteProduct, register, getDataWorkers, getOrders, orders, pharmacies, error, items, workers, categories, rol, isFetching}) => {
 
-    useEffect(() => { getDataProducts(); getCategories(); getPharmacies(); getDataWorkers(); }, [])
+    useEffect(() => { getDataProducts(); getCategories(); getPharmacies(); getDataWorkers(); getOrders();}, [])
 
     document.title = "Админ панель";
 
@@ -54,7 +56,7 @@ let Admin = ({getDataProducts, getCategories, getPharmacies, createProduct, upda
             {
                 label: "Заказы",
                 key: 6,
-                children: (<Worker workers={workers} />),
+                children: (<Orders orders={orders} />),
             },
         ]}
         />
@@ -71,6 +73,7 @@ let mapStateToProps = (state) => ({
     pharmacies: state.products.pharmacies,
     isFetching: state.products.isFetching,
     error: state.auth.error,
+    orders: state.orders.orders,
 })
 
-export default compose(connect(mapStateToProps, { getDataProducts, getCategories, getPharmacies, createProduct, updateProduct, deleteProduct, register, getDataWorkers }), withAuthRedirect)(Admin);
+export default compose(connect(mapStateToProps, { getDataProducts, getCategories, getPharmacies, createProduct, updateProduct, deleteProduct, register, getDataWorkers, getOrders }), withAuthRedirect)(Admin);

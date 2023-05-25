@@ -173,4 +173,12 @@ export const authAPI = {
   },
 };
 
+export const ordersAPI = {
 
+  async getOrders() {
+    let response = await fetch("http://localhost/api/order/getOrders.php", { method: 'get' });
+    let json = await response.json();
+    return json;
+    
+  },
+}
