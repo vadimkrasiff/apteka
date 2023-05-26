@@ -181,4 +181,10 @@ export const ordersAPI = {
     return json;
     
   },
+  async getSubOrder() {
+    let response = await fetch("http://localhost/api/order/getOrder.php", { method: 'get' });
+    let json = await response.json();
+    return json;
+    
+  },
 }

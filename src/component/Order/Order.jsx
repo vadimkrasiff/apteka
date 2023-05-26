@@ -22,7 +22,11 @@ let Order = ({ storage, isFetching, getStorage }) => {
         {
             title: 'Название',
             dataIndex: 'name',
-            sorter: (a, b) => a.name.localeCompare(b.name)
+            sorter: (a, b) => {
+                const textA = a.name.props.children;
+                const textB = b.name.props.children;
+                return textA.localeCompare(textB);
+              }
         },
         {
             title: 'Цена',
@@ -105,6 +109,7 @@ let Order = ({ storage, isFetching, getStorage }) => {
         count: el.count,
         category_name: el.category_name,
         manufacturer: el.manufacturer || "Не указан",
+        pharmacy_id: el.pharmacy_id,
 
     })) : null;
 

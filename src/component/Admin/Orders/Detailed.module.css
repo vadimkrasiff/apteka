@@ -1,0 +1,26 @@
+.label {
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.path {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 600px;
+    margin-top: 15px;
+}
+
+.item, .line{
+    flex: 1 0 0;
+    
+}
+
+.line {
+    height: 1rem;
+    display: flex;
+    align-items: flex-end;
+    /* width: 500px; */
+    /* height: 1px; */
+    border-bottom: 1px dashed #000 ;
+}

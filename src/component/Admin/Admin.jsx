@@ -12,12 +12,12 @@ import { register } from "../../redux/auth-reducer";
 import Register from "./Register/Register";
 import Worker from "./Worker/Worker";
 import { getDataWorkers } from "../../redux/workers-reducer";
-import { getOrders } from "../../redux/orders-reducer";
+import { getSubOrder, getOrders } from "../../redux/orders-reducer";
 import Orders from "./Orders/Orders";
 
-let Admin = ({getDataProducts, getCategories, getPharmacies, createProduct, updateProduct, deleteProduct, register, getDataWorkers, getOrders, orders, pharmacies, error, items, workers, categories, rol, isFetching}) => {
+let Admin = ({getDataProducts, getCategories, getPharmacies, createProduct, updateProduct, deleteProduct, register, getDataWorkers, getOrders, getSubOrder,  subOrder,orders, pharmacies, error, items, workers, categories, rol, isFetching}) => {
 
-    useEffect(() => { getDataProducts(); getCategories(); getPharmacies(); getDataWorkers(); getOrders();}, [])
+    useEffect(() => { getDataProducts(); getCategories(); getPharmacies(); getDataWorkers(); getOrders();getSubOrder();}, [])
 
     document.title = "Админ панель";
 
@@ -56,7 +56,7 @@ let Admin = ({getDataProducts, getCategories, getPharmacies, createProduct, upda
             {
                 label: "Заказы",
                 key: 6,
-                children: (<Orders orders={orders} />),
+                children: (<Orders orders={orders} subOrder={subOrder}/>),
             },
         ]}
         />
@@ -74,6 +74,8 @@ let mapStateToProps = (state) => ({
     isFetching: state.products.isFetching,
     error: state.auth.error,
     orders: state.orders.orders,
+    subOrder: state.orders.subOrder,
 })
 
-export default compose(connect(mapStateToProps, { getDataProducts, getCategories, getPharmacies, createProduct, updateProduct, deleteProduct, register, getDataWorkers, getOrders }), withAuthRedirect)(Admin);
+export default compose(connect(mapStateToProps, { getDataProducts, getCategories, getPharmacies, createProduct, updateProduct,
+    deleteProduct, register, getDataWorkers, getOrders, getSubOrder}), withAuthRedirect)(Admin);
