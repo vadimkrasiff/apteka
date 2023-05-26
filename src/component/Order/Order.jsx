@@ -8,8 +8,9 @@ import css from "./Order.module.css";
 import { Button, Form, Input, Modal, Table, Typography } from "antd";
 import OrderForm from "./OrderForm";
 import { NavLink } from "react-router-dom";
+import { createOrder } from "../../redux/orders-reducer";
 
-let Order = ({ storage, isFetching, getStorage }) => {
+let Order = ({ storage, isFetching, getStorage, createOrder, worker_id }) => {
 
     document.title = "Заказы"
     useEffect(() => {
@@ -131,7 +132,7 @@ let Order = ({ storage, isFetching, getStorage }) => {
                 <Table rowSelection={rowSelection} columns={columns} dataSource={data} />
                 <Button type="primary" onClick={showModal } disabled={!selectedRows.length} loading={loading}>Заказать</Button>
                 <span style={{marginLeft:20}}>{selectedRows.length ? `Количество: ${selectedRows.length}` : ''}</span>
-                <OrderForm  openModal={openModal} setOpenModal={setOpenModal} columns={columns} selectedRows={selectedRows} setNull={setNull} setSelectedRows={setSelectedRows} />
+                <OrderForm createOrder={createOrder} openModal={openModal} setOpenModal={setOpenModal} columns={columns} selectedRows={selectedRows} setNull={setNull} setSelectedRows={setSelectedRows} />
             </div>
         }
     </>
@@ -142,4 +143,4 @@ let mapStateToProps = (state) => ({
     isFetching: state.storage.isFetching,
 })
 
-export default compose(connect(mapStateToProps, { getStorage }), withAuthRedirect)(Order);
+export default compose(connect(mapStateToProps, { getStorage, createOrder }), withAuthRedirect)(Order);

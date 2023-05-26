@@ -187,4 +187,16 @@ export const ordersAPI = {
     return json;
     
   },
+  async createOrder(data) {
+    let worker_id = localStorage.getItem('id');
+    let response = await fetch(`http://localhost/api/order/create.php`,
+      {
+        method: 'POST',
+
+        body: JSON.stringify({worker_id, data})
+      });
+    let json = await response.json();
+    alert(json.message);
+    return json;
+  },
 }

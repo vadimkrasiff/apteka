@@ -1,7 +1,7 @@
 import { Input, InputNumber, Modal, Table } from "antd";
 import React, { useEffect, useState } from "react";
 
-let OrderForm = ({ openModal, setOpenModal, selectedRows, setNull}) => {
+let OrderForm = ({ openModal, setOpenModal, selectedRows, setNull, createOrder}) => {
 
 
     const [data, setData] = useState(selectedRows);
@@ -21,6 +21,12 @@ let OrderForm = ({ openModal, setOpenModal, selectedRows, setNull}) => {
 
     const handleOk = () => {
         console.log(data);
+        createOrder(data.map(el => ({
+          item_id: el.id,
+          count: el.count,
+          sum: el.cost*el.count,
+          pharmacy_id: el.pharmacy_id,
+        })));
         setNull();
         setInputValues([]);
         setOpenModal(false);
