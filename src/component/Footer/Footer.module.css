@@ -18,7 +18,7 @@
 }
 
 .footer a .vk {
-    /* background-image: url("./../../images/vk.png"); */
+    background-image: url("https://vk.com/images/icons/favicons/fav_logo.ico?6");
     background-size: 100% 100%;
     background-position: center;
     width: 20px;
@@ -26,7 +26,7 @@
 }
 
 .footer a .tg {
-    /* background-image: url("./../../images/tg.svg"); */
+    background-image: url("https://web.telegram.org/a/favicon-32x32.png");
     background-size: 100% 100%;
     background-position: center;
     width: 30px;
