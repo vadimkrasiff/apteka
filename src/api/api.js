@@ -126,14 +126,23 @@ export const authAPI = {
     let json = await response.json();
     
     localStorage.setItem('id', json.id || 0);
-    localStorage.setItem('hash', json.hash || 0);
+    localStorage.setItem('hash', json.hash || 0)
+  
+
     return json;
   },
 
   async check() {
-    
-    let id = localStorage.getItem('id');
-    let hash = localStorage.getItem('hash');
+    let id, hash;
+    if (localStorage.getItem('id') && localStorage.getItem('hash')){
+    id = localStorage.getItem('id');
+    hash = localStorage.getItem('hash');
+  } else {
+    localStorage.setItem('id', 0);
+    localStorage.setItem('hash', 0);
+    id = 0;
+    hash = 0;
+  }
     if( id == "0" ) {id = false;}
     if( hash == "0" ) {hash = false;}
     console.log(id, hash)

@@ -22,7 +22,7 @@ let Admin = ({getDataProducts, getCategories, getPharmacies, createProduct, upda
     document.title = "Админ панель";
 
     return <>
-    {!items || !categories || isFetching ? <Preloader /> :
+    {!items || !categories || !orders || !subOrder || !pharmacies || !workers  || isFetching ? <Preloader /> :
     rol !== 'admin' ? <><div>У Вас нет доступа!</div><div className="preloader"><Preloader /></div></> :    
         <Tabs
         defaultActiveKey="1"
@@ -71,7 +71,7 @@ let mapStateToProps = (state) => ({
     items: state.products.items,
     categories: state.products.categories,
     pharmacies: state.products.pharmacies,
-    isFetching: state.products.isFetching,
+    isFetching: state.orders.isFetching,
     error: state.auth.error,
     orders: state.orders.orders,
     subOrder: state.orders.subOrder,

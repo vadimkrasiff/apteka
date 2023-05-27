@@ -67,8 +67,9 @@ let Order = ({ storage, isFetching, getStorage, createOrder, worker_id }) => {
       }
 
   const handleSelectChange = (selectedRowKeys, selectedRows) => {
-    const filteredRows = selectedRows.filter((row) => row.count !== 0);
+    const filteredRows = selectedRows.filter((row) => row.count != 0);
     setSelectedRows(filteredRows);
+    console.log(filteredRows    )
     setSelectedRowKeys(selectedRowKeys);
   };
 
@@ -81,7 +82,7 @@ let Order = ({ storage, isFetching, getStorage, createOrder, worker_id }) => {
     selectedRowKeys,
     onChange: handleSelectChange,
     getCheckboxProps: (record) => ({
-        disabled: record.count === 0,
+        disabled: record.count == 0,
       }),
   };
 
@@ -97,8 +98,6 @@ let Order = ({ storage, isFetching, getStorage, createOrder, worker_id }) => {
 
     const handleChange = e => {
         setSearchText(e.target.value);
-        setSelectedRows([]);
-    setSelectedRowKeys([]);
     };
 
 
