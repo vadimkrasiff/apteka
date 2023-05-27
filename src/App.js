@@ -37,11 +37,11 @@ function App(props) {
         
         <Routes >
           <Route path='/login' element={<Login />} />
+          <Route path='/profile' element={<><div>Данная страница находится в разработке</div><div className="preloader"><Preloader /></div></>} />
+          <Route path='/about-us' element={<><div>Данная страница находится в разработке</div><div className="preloader"><Preloader /></div></>} />
           <Route path='/order' element={<Order /> } />
           <Route path='/products' element={<Products />} />
           <Route path='/admin' element={<Admin /> } />
-          {/* <Route path='/create-item' element={<div>Create item</div> } />
-          <Route path='/update-item' element={<div>Update item</div> } /> */}
           <Route path='/product/:currentId' element={<Product />} />
           <Route exact path='/' element={<Navigate to="/products" replace />} />
           <Route path='*'element={<><div>404 Not Found</div><div className="preloader"><Preloader /></div></>}  />

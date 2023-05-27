@@ -17,7 +17,7 @@ let Header = ({ isAuth, logout, rol }) => {
                 <NavLink to="/products">Товары</NavLink>
                 {isAuth ? <NavLink to="/order">Заказ</NavLink> : null}
                 {rol == "admin" ? <NavLink to="/admin">Админ панель</NavLink> : null}
-                <NavLink to="/about-me">О нас</NavLink>
+                <NavLink to="/about-us">О нас</NavLink>
             </div>
             {isAuth ?
                 <Menu logout={logout} />
