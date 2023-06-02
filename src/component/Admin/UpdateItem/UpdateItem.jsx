@@ -61,7 +61,7 @@ let UpdateItem = ({ categories, items, updateProduct }) => {
                     onChange={handleChange}
                     options={items.map(el => ({
                         value: el.id,
-                        label: el.id,
+                        label: (el.id + " - " + el.name),
                     }))}
 
                 />

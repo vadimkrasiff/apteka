@@ -55,58 +55,27 @@ let Detailed = ({ openModal, setOpenModal, currentSub, currentOrder }) => {
     return <>
         <Modal width={700} style={{ width: 800 }} open={openModal} onOk={handleOk} onCancel={handleCancel}>
             <Typography.Title level={3} style={{ marginBottom: 20 }}>Детали заказа</Typography.Title>
-            <Form
-                labelCol={{ span: 3, }}
-
-                wrapperCol={{ span: 16 }}
-            >
-                <Form.Item style={{ width: '800px' }} 
-                    label={<span style={{ fontWeight: 500 }}>Номер товра</span>}>
-                    {/* <div className={css.path}> */}
-                    {/* <div className={css.label}>Номер товра: </div> */}
-                    {/* <span className={css.line}></span> */}
-                    {currentOrder.id}
-                    {/* </div> */}
-                </Form.Item>
-                <Form.Item style={{ width: '800px' }} 
-                    label={<span style={{ fontWeight: 500 }}>Сотрудник</span>}>
-                    {/* <div className={css.path}>
-                {/* <div className={css.label}>Сотрудник: </div> */}
-                    {/* <div className={css.line}></div> */}
-                    <div className={css.item}>{currentOrder.fio}</div>
-                    {/* </div> */}
-                </Form.Item>
-                <Form.Item style={{ width: '800px' }} 
-                    label={<span style={{ fontWeight: 500 }}>Дата</span>}
-                >
-                    {/* <div className={css.path}> */}
-                    {/* <div className={css.label}>Дата: </div> */}
-                    {/* <div className={css.line}></div> */}
-                    <div className={css.item}>{currentOrder.date}</div>
-                    {/* </div> */}
-                </Form.Item>
-                <Form.Item style={{ width: '800px' }} 
-                    label={<span style={{ fontWeight: 500 }}>Сумма</span>}
-                >
-                    {/* <div className={css.path}>
-                <div className={css.line}></div> */}
-                    <div className={css.item}>{currentOrder.sum}</div>
-                    {/* </div> */}
-                </Form.Item>
-                <Form.Item style={{ width: '800px' }} label={<span style={{ fontWeight: 500 }}>Товары</span>}> 
-                <Table  pagination={false} columns={columns}
+                <label className={css.label}>Номер товра</label>
+                <div className={css.path}>
+                {currentOrder.id}
+                </div>
+                <label className={css.label}>Сотрудник</label>
+                <div className={css.path}>
+                {currentOrder.fio}
+                </div>
+                <label className={css.label}>Дата</label>
+                <div className={css.path}>
+                {currentOrder.date}
+                </div>
+                <label className={css.label}>Сумма</label>
+                <div className={css.path}>
+                {currentOrder.sum}
+                </div>
+                <label className={css.label} style={{top:10}}>Товары</label>
+                
+                <Table   pagination={false} columns={columns}
                     dataSource={data} />
-                </Form.Item>
                 
-                
-
-
-            </Form>
-
-
-
-
-
         </Modal>
     </>
 }

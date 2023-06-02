@@ -141,7 +141,7 @@ let Register = ({ register, error, pharmacies }) => {
         <Form.Item
         >
           <Button className={css.logButton} type="primary" htmlType="submit">
-            Submit
+            Создать
           </Button>
         </Form.Item>
       </Form>

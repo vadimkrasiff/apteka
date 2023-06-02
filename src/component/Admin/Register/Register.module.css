@@ -35,7 +35,7 @@
     height: 5px;
     background-color: #fff;
     content: '';
-    z-index: -1;
+    z-index: -15;
 }
 
 .rem {
