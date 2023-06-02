@@ -39,23 +39,18 @@ let Admin = ({getDataProducts, getCategories, getPharmacies, createProduct, upda
                 children: (<UpdateItem categories={categories} items={items}  updateProduct={updateProduct} />),
             },
             {
-                label: "Удаление товара",
-                key: 3,
-                children: (<DeleteItem items={items}  deleteProduct={deleteProduct}  />),
-            },
-            {
                 label: "Создание сотрудника",
-                key: 4,
+                key: 3,
                 children: (<Register error={error}  pharmacies={pharmacies} register={register}  />),
             },
             {
                 label: "Сотрудники",
-                key: 5,
+                key: 4,
                 children: (<Worker workers={workers} />),
             },
             {
                 label: "Заказы",
-                key: 6,
+                key: 5,
                 children: (<Orders orders={orders} subOrder={subOrder}/>),
             },
         ]}
