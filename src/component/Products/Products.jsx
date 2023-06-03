@@ -81,14 +81,6 @@ let Products = ({ items, isFetching, getDataProducts, getCategories, categories 
                 </div> 
                 </>): <><div>Товары не найдены</div><div className="preloader"><Preloader /></div></> }
                 
-                {/* <Typography.Title style={{ marginBottom:20}}  level={3} >Противомикробные препараты</Typography.Title>
-                <div className={css.products}>
-                {getCategoryProduct("Противомикробные препараты")}
-                </div>
-                <Typography.Title style={{ marginBottom:20}}  level={3} >Противомикробные препараты</Typography.Title>
-                <div className={css.products}>
-                {getCategoryProduct("Противомикробные препараты")}
-                </div> */}
 
             </div>}
     </>

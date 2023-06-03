@@ -15,7 +15,8 @@ import { getDataWorkers } from "../../redux/workers-reducer";
 import { getSubOrder, getOrders } from "../../redux/orders-reducer";
 import Orders from "./Orders/Orders";
 
-let Admin = ({getDataProducts, getCategories, getPharmacies, createProduct, updateProduct, deleteProduct, register, getDataWorkers, getOrders, getSubOrder,  subOrder,orders, pharmacies, error, items, workers, categories, rol, isFetching}) => {
+let Admin = ({getDataProducts, getCategories, getPharmacies, createProduct, updateProduct, deleteProduct, register, getDataWorkers, 
+    getOrders, getSubOrder,  subOrder,orders, pharmacies, error, items, workers, categories, rol, isFetching}) => {
 
     useEffect(() => { getDataProducts(); getCategories(); getPharmacies(); getDataWorkers(); getOrders();getSubOrder();}, [])
 
