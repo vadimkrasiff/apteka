@@ -124,7 +124,7 @@ let Order = ({ storage, isFetching, getStorage, createOrder, worker_id }) => {
                     >
                         <Form.Item
                             name="search" >
-                            <Input onChange={handleChange} placeholder="Поиск..." style={{ width: "100%", height: 40, position: "relative" }} />
+                            <Input allowClear onChange={handleChange} placeholder="Поиск..." style={{ width: "100%", height: 40, position: "relative" }} />
                         </Form.Item>
                     </Form>
                 </div>

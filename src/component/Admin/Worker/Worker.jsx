@@ -34,7 +34,7 @@ let Worker = ({workers}) => {
             sorter: (a, b) => a.num_phone.localeCompare(b.num_phone)
           },
         {
-          title: 'Адрес',
+          title: 'Адрес аптеки',
           dataIndex: 'address',
           sorter: (a, b) => a.address.localeCompare(b.address)
         },
