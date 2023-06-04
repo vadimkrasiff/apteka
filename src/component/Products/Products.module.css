@@ -33,9 +33,9 @@
 
 .product {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* align-items: center; */
     width: 220px;
     height: 350px;
     box-sizing: border-box;
@@ -44,6 +44,11 @@
     margin-bottom: 20px;
     border-radius: 5px;
     box-shadow: 0 0 5px rgb(0 0 0 / 20%);
+    transition: 0.3s;
+}
+
+.product:hover {
+    box-shadow: 0 0 10px rgb(0 0 0 / 30%);
 }
 
 .info {
