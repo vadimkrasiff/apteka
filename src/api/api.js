@@ -178,7 +178,6 @@ export const authAPI = {
         body: JSON.stringify(data)
       });
     let json = await response.json();
-    alert(json.message);
     return json;
   },
 };

@@ -21,7 +21,7 @@ let Worker = ({ workers }) => {
 };
 
 
-
+const uniqueAddress = [...new Set(filteredWorkers.map(el => el.address))];
   const columns = [
     {
       title: 'ID',
@@ -62,9 +62,9 @@ let Worker = ({ workers }) => {
     {
       title: 'Адрес аптеки',
       dataIndex: 'address',
-      filters: filteredWorkers.map((el) => ({
-        text: el.address,
-          value: el.address,
+      filters: uniqueAddress.map((address) => ({
+        text: address,
+          value: address,
       })),
       sorter: (a, b) => a.address.localeCompare(b.address),
       onFilter: (value, record) => record.address.indexOf(value) === 0,

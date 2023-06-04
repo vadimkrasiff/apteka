@@ -14,7 +14,7 @@ let Register = ({ register, error, pharmacies }) => {
 
   const onFinish = (values) => {
     initializeApp()
-    if (register({'fio':values.fio, 'num_phone': values.numPhone, 'login': values.login, 'password': values.password}));
+    register({'fio':values.fio, 'num_phone': values.numPhone, 'login': values.login, 'password': values.password, "pharmacy_id":values.pharmacy_id})
     
   }
 
@@ -28,6 +28,7 @@ let Register = ({ register, error, pharmacies }) => {
           doublePassword: "",
           fio: "",
           numPhone: "",
+          pharmacy_id:""
         }}
         initialValues={{
           login: "",
@@ -35,6 +36,7 @@ let Register = ({ register, error, pharmacies }) => {
           doublePassword: "",
           fio: "",
           numPhone: "",
+          pharmacy_id:''
         }}
       >
         <Typography.Title level={3} >Создание сотрудника</Typography.Title>
@@ -80,7 +82,7 @@ let Register = ({ register, error, pharmacies }) => {
             
           ]}
         >
-          <InputNumber min={11111111111} max={99999999999} maxLength={11} width={500} style={error ? { borderColor: "#ff4d4f", width: 400 } : {width: 400}} />
+          <InputNumber min={89111111111} max={89999999999} maxLength={11} width={500} style={error ? { borderColor: "#ff4d4f", width: 400 } : {width: 400}} />
         </Form.Item>
         <label className={css.label}>Логин</label>
         <Form.Item
@@ -133,11 +135,10 @@ let Register = ({ register, error, pharmacies }) => {
           <Input.Password style={error ? { borderColor: "#ff4d4f" } : {}} />
         </Form.Item>
 
-        <Form.Item name="error" style={{ position: "relative", height: 0 }} >
-          <div className={css.error} style={error ? { top: -10 } : { top: 0 }}> {error}</div>
+        <Form.Item name="error" style={{ position: "relative", height: 0, paddingBottom: 50}} >
+          <div className={css.error} style={error ? { top: -10, } : { top: 0 }}>{error}</div>
 
         </Form.Item>
-
         <Form.Item
         >
           <Button className={css.logButton} type="primary" htmlType="submit">

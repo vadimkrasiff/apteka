@@ -36,6 +36,11 @@ export const setAuthUserData = (id,  login, rol, address, isAuth, error) => ({
     payload:{ id, login, rol, address, isAuth, error}
 });
 
+export const setError = (error) => ({
+    type: SET_ERROR,
+    error
+});
+
 export const getAuthUserData = () => async (dispatch) => {
     
     let response = await authAPI.check();
@@ -71,16 +76,18 @@ export const logout = () => async (dispatch) => {
 };
 
 export const register =(data) => async(dispatch) => {
+    
     let response = await authAPI.regist(data);
+    
+
     if (response.response === 1) {
         dispatch(initializedSucces(false))
-        dispatch(getAuthUserData());
-        setTimeout(()=> dispatch(initializedSucces(true)),1000);
-        return true
-        
+    alert(response.message);
+    dispatch(setError(null));
+    setTimeout(()=> dispatch(initializedSucces(true)),1000)
+        return true;  
     } else {
-        dispatch(setAuthUserData(null, null, null, null, false, response.message));
-        return false
+        dispatch(setError(response.message));
     }
 }
 
