@@ -43,7 +43,7 @@ let CreateItem = ({categories, createProduct}) => {
                     },
                 ]}
             >
-                <Input />
+                <Input maxLength={80} />
             </Form.Item>
             <Form.Item
                 name="cost"
@@ -68,9 +68,9 @@ let CreateItem = ({categories, createProduct}) => {
                     },
                 ]}
             >
-                <TextArea autoSize={{
-          minRows: 4,
-          maxRows: 6,
+                <TextArea showCount maxLength={1500} autoSize={{
+          minRows: 6,
+          maxRows: 8,
         }} />
             </Form.Item>
 
@@ -84,7 +84,7 @@ let CreateItem = ({categories, createProduct}) => {
                     },
                 ]}
             >
-                <Input />
+                <Input maxLength={50} />
             </Form.Item>
 
             <Form.Item

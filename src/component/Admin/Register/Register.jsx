@@ -51,7 +51,7 @@ let Register = ({ register, error, pharmacies }) => {
             },
           ]}
         >
-          <Input style={error ? { borderColor: "#ff4d4f" } : {}} />
+          <Input maxLength={50} style={error ? { borderColor: "#ff4d4f" } : {}} />
         </Form.Item>
         <label className={css.label}>Адрес аптеки</label>
         <Form.Item
@@ -95,7 +95,7 @@ let Register = ({ register, error, pharmacies }) => {
             },
           ]}
         >
-          <Input style={error ? { borderColor: "#ff4d4f" } : {}} />
+          <Input maxLength={30} style={error ? { borderColor: "#ff4d4f" } : {}} />
         </Form.Item>
 
         <label className={css.label}>Пароль</label>
@@ -109,7 +109,7 @@ let Register = ({ register, error, pharmacies }) => {
             },
           ]}
         >
-          <Input.Password style={error ? { borderColor: "#ff4d4f" } : {}} />
+          <Input.Password maxLength={16} style={error ? { borderColor: "#ff4d4f" } : {}} />
         </Form.Item>
 
         <label className={css.label}>Повтор пароля</label>
@@ -132,7 +132,7 @@ let Register = ({ register, error, pharmacies }) => {
             }),
           ]}
         >
-          <Input.Password style={error ? { borderColor: "#ff4d4f" } : {}} />
+          <Input.Password maxLength={16} style={error ? { borderColor: "#ff4d4f" } : {}} />
         </Form.Item>
 
         <Form.Item name="error" style={{ position: "relative", height: 0, paddingBottom: 50}} >

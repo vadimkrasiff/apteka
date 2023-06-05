@@ -145,7 +145,6 @@ export const authAPI = {
   }
     if( id == "0" ) {id = false;}
     if( hash == "0" ) {hash = false;}
-    console.log(id, hash)
     let response = await fetch(`http://localhost/api/worker/check.php`, {
       // credentials: "include",
       method: 'POST',

@@ -77,7 +77,7 @@ let UpdateItem = ({ categories, items, updateProduct }) => {
                 ]}
 
             >
-                <Input  />
+                <Input maxLength={80} />
             </Form.Item>
             <Form.Item
                 name="cost"
@@ -89,7 +89,7 @@ let UpdateItem = ({ categories, items, updateProduct }) => {
                     },
                 ]}
             >
-                <InputNumber min={0} style={{ width: "100%" }} />
+                <InputNumber  min={0} style={{ width: "100%" }} />
             </Form.Item>
 
             <Form.Item
@@ -102,10 +102,10 @@ let UpdateItem = ({ categories, items, updateProduct }) => {
                     },
                 ]}
             >
-                <Input.TextArea autoSize={{
-                    minRows: 6,
-                    maxRows: 9,
-                }} />
+                <Input.TextArea showCount maxLength={1500} autoSize={{
+          minRows: 6,
+          maxRows: 8,
+        }}  />
             </Form.Item>
 
             <Form.Item
@@ -118,7 +118,7 @@ let UpdateItem = ({ categories, items, updateProduct }) => {
                     },
                 ]}
             >
-                <Input />
+                <Input maxLength={50}/>
             </Form.Item>
 
             <Form.Item
